@@ -25,7 +25,7 @@
     <div class="h-[92vh] flex">
       <!-- Left side (Login Form) -->
       <div
-        class="lg:w-1/2 flex flex-col justify-center lg:px-20 md:px-14 sm:px-10 px-6 w-full"
+        class="lg:w-1/2 flex flex-col justify-center lg:px-28 md:px-16 sm:px-10 px-6 w-full"
       >
         <img
           src="assets/green_logo.png"
@@ -53,7 +53,6 @@
               class="w-full border border-gray-500 rounded px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#283618]"
             />
           </div>
-          <!-- Password -->
           <!-- Password -->
           <div>
             <label class="block text-[16px] font-medium mb-1 text-[#283618]"
@@ -91,7 +90,7 @@
           <!-- Login Button -->
           <button
             type="submit"
-            class="w-full bg-[#283618] text-white pt-4 pb-4 pr-14 pl-14 rounded hover:bg-[#212419] transition"
+            class="w-full bg-[#283618] text-white pt-[8px] pb-[8px] pr-[14px] pl-[14px] rounded hover:bg-[#212419] transition"
           >
             Login
           </button>
@@ -114,18 +113,18 @@
             <div class="w-[40%] border-t border-[#88965E] rounded-[10px]"></div>
 
             <!-- Center Text -->
-            <span class="mx-4 text-[16px] font-semibold text-[#88965E]">
+            <span class="mx-4 text-[15px] font-semibold text-[#88965E]">
               Or login with
             </span>
             <!-- Right Line -->
             <div class="w-[40%] border-t border-[#88965E] rounded-[14px]"></div>
           </div>
 
-          <div class="flex space-x-4 justify-center mt-2">
+          <div class="flex justify-evenly mt-2">
             <a
               href="https://www.facebook.com/"
               target="_blank"
-              class="border border-[#807d7d] w-20 h-10 rounded flex items-center justify-center"
+              class="border border-[#807d7d] w-[160px] h-[56px] pt-[16px] pb-[16px] pr-[24px] pl-[24px] rounded-md flex items-center justify-center"
             >
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg"
@@ -135,9 +134,9 @@
             </a>
 
             <a
-              href="https://www.google.com/"
+              href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Faccounts.google.com%2F&followup=https%3A%2F%2Faccounts.google.com%2F&ifkv=AdBytiMcp_1hpXb1n7qLQrfJ5PE2r6XgBHEN8Ba4PrkjJ2c8SnCQEdHFwgkeZlfKgCodLAn_qA1B&passive=1209600&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-483315108%3A1749633688120807"
               target="_blank"
-              class="border border-[#807d7d] w-20 h-10 rounded flex items-center justify-center"
+             class="border border-[#807d7d] w-[160px] h-[56px] pt-[16px] pb-[16px] pr-[24px] pl-[24px] rounded-md flex items-center justify-center"
             >
               <img
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
@@ -147,9 +146,9 @@
             </a>
 
             <a
-              href="https://www.apple.com/"
+              href="https://account.apple.com/sign-in"
               target="_blank"
-              class="border border-[#807d7d] w-20 h-10 rounded flex items-center justify-center"
+              class="border border-[#807d7d] w-[160px] h-[56px] pt-[16px] pb-[16px] pr-[24px] pl-[24px] rounded-md flex items-center justify-center"
             >
               <img
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
@@ -160,7 +159,14 @@
           </div>
         </form>
       </div>
+      <div class="lg:w-1/2 hidden lg:flex justify-center items-center">
+  <img
+    class="lg:w-[620px] h-[660px] mt-[40px] mr-[160px]"
+    src="assets/illustration_login.png"
+    alt="Login Illustration"
+  />
+</div>
     </div>
-  </body>
+  </body> 
   <script src="script.js"></script>
 </html>
