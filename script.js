@@ -26,7 +26,7 @@ function toggleConfirmPassword() {
 }
 
 // To do list (button click)
-const menuItems = document.querySelectorAll(".button_upload");
+const menuItems = document.querySelectorAll("a.button_upload");
 
 menuItems.forEach((item) => {
   item.addEventListener("click", () => {
@@ -48,4 +48,20 @@ deleteButtons.forEach((button) => {
   });
 });
 
-//clicking edit change into (make-change and cancel) removing the (edit and delete button)
+//password-matching
+function validatePassword() {
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword");
+  const errorText = document.getElementById("confirm-error");
+
+  if (password !== confirmPassword.value) {
+    confirmPassword.classList.add("border-red-500");
+    errorText.classList.remove("hidden");
+    return false;
+  } else {
+    confirmPassword.classList.remove("border-red-500");
+    errorText.classList.add("hidden");
+    window.location.href = "sign_in.html";
+    return true;
+  }
+}
