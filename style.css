@@ -1,4 +1,9 @@
 @import "tailwindcss";
-h1{
-    font-family: "Poppins";
+h1 {
+  font-family: "Poppins";
+}
+@media (max-width: 640px) {
+  #icon {
+    width: 190px;
+  }
 }
