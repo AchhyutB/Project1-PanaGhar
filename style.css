@@ -7,3 +7,9 @@ h1 {
     width: 190px;
   }
 }
+body {
+  font-family: "Inter", sans-serif;
+}
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
