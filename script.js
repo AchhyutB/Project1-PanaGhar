@@ -1,4 +1,5 @@
 // password eye button
+
 function togglePassword() {
   const password = document.getElementById("password");
   const icon = document.getElementById("eye-icon");
@@ -26,6 +27,7 @@ function toggleConfirmPassword() {
 }
 
 // To do list (button click)
+
 const menuItems = document.querySelectorAll("a.button_upload");
 
 menuItems.forEach((item) => {
@@ -49,6 +51,7 @@ deleteButtons.forEach((button) => {
 });
 
 //password-matching
+
 function validatePassword() {
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirmPassword");
@@ -65,3 +68,107 @@ function validatePassword() {
     return true;
   }
 }
+
+// for the landing page nav bar
+
+const navDialog = document.getElementById("nav-dialog");
+
+function handleMenu() {
+  navDialog.classList.toggle("hidden");
+}
+
+// delete from the add to cart
+const deleteItems = document.querySelectorAll(".delete-items");
+deleteItems.forEach((button) => {
+  button.addEventListener("click", () => {
+    button.closest("div.flex.items-center").remove();
+  });
+});
+
+//Payment change if delete or add to cart
+
+// Get references to all required DOM elements
+const itemCountEl = document.getElementById("item-count");
+const orderSubtotalEl = document.getElementById("order-subtotal");
+const orderShippingEl = document.getElementById("order-shipping");
+const orderTotalEl = document.getElementById("order-total");
+const remainingAmountEl = document.getElementById("remaining-amount");
+const cartWrapper = document.getElementById("cart-wrapper");
+const emptyCartMsg = document.getElementById("empty-cart-msg");
+
+// Define shipping and free shipping threshold
+const freeShippingThreshold = 1000;
+const fixedShipping = 80;
+
+// Function to update the order summary
+function updateOrderSummary() {
+  // Get all cart items
+  const items = document.querySelectorAll(".cart-item");
+  let subtotal = 0;
+
+  // Calculate subtotal by adding up item prices
+  items.forEach((item) => {
+    const price = parseFloat(item.getAttribute("data-price"));
+    subtotal += price;
+  });
+
+  // Check if cart is empty
+  const isEmpty = items.length === 0;
+
+  // Calculate shipping using if...else
+  let shipping;
+
+  if (isEmpty) {
+    shipping = 0; // No shipping for empty cart
+  } else if (subtotal >= freeShippingThreshold) {
+    shipping = 0; // Free shipping condition met
+  } else {
+    shipping = fixedShipping; // Flat shipping rate
+  }
+
+  // Calculate remaining amount to get free shipping
+  let remaining;
+
+  if (isEmpty) {
+    remaining = freeShippingThreshold;
+  } else {
+    if (freeShippingThreshold - subtotal > 0) {
+      remaining = freeShippingThreshold - subtotal;
+    } else {
+      remaining = 0;
+    }
+  }
+
+  // Calculate total = subtotal + shipping
+  const total = subtotal + shipping;
+
+  // Update values in the order summary UI
+  itemCountEl.textContent = items.length;
+  orderSubtotalEl.textContent = subtotal;
+  orderShippingEl.textContent = shipping;
+  orderTotalEl.textContent = total;
+  remainingAmountEl.textContent = remaining;
+
+  // If cart is empty, center everything and show empty cart message
+  if (isEmpty) {
+    cartWrapper.classList.remove("justify-evenly");
+    cartWrapper.classList.add("flex-col", "items-center");
+    emptyCartMsg.classList.remove("hidden");
+  } else {
+    // If cart has items, go back to normal layout and hide empty message
+    cartWrapper.classList.add("justify-evenly");
+    cartWrapper.classList.remove("flex-col", "items-center");
+    emptyCartMsg.classList.add("hidden");
+  }
+}
+
+// Run summary update on page load
+updateOrderSummary();
+
+// When delete icon is clicked, remove item and update summary
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("delete-items")) {
+    e.target.closest(".cart-item").remove();
+    updateOrderSummary();
+  }
+});
