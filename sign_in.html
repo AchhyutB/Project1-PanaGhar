@@ -42,14 +42,14 @@
           Login to access your PanaGhar account
         </p>
 
-        <form id="loginForm" class="space-y-4">
+        <form id="loginForm-signin" class="space-y-4">
           <!-- Email -->
           <div>
             <label class="block text-[16px] mb-1 font-medium text-[#283618]"
               >Email</label
             >
             <input
-              id="email"
+              id="email-signin"
               type="email"
               placeholder="Enter your Email"
               class="w-full border border-gray-500 rounded px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#283618]"
@@ -63,7 +63,7 @@
             >
             <div class="relative">
               <input
-                id="password"
+                id="password-signin"
                 type="password"
                 placeholder="Enter your Password"
                 class="w-full border border-gray-500 rounded px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#2C3812]"
@@ -73,12 +73,12 @@
                 class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
               >
                 <i
-                  id="eye-icon"
+                  id="eye-icon-signin"
                   class="fa-solid fa-eye-slash opacity-90 text-black"
                 ></i>
               </span>
             </div>
-            <p id="errorMsg" class="text-red-500 text-sm mt-1"></p>
+            <p id="errorMsg-signin" class="text-red-500 text-sm mt-1"></p>
           </div>
 
           <!-- Remember Me and Forgot -->
@@ -185,4 +185,49 @@
     </div>
   </body>
   <script src="script.js"></script>
+
+  <!-- JS FILE IS NOT WORKING IN SCRIPT.JS  :(  [Here are those code that are not running in script.js file]-->
+
+  <script>
+    // If the user don't give the email or pw for login/signup error shows
+
+    document
+      .getElementById("loginForm-signin")
+      .addEventListener("submit", function (e) {
+        const email = document.getElementById("email-signin").value.trim();
+        const password = document.getElementById("password-signin").value.trim();
+        const errorMsg = document.getElementById("errorMsg-signin");
+
+        errorMsg.textContent = "";
+
+        if (!email || !password) {
+          e.preventDefault();
+
+          if (!email && !password) {
+            errorMsg.textContent = "Please enter both Email and Password.";
+          } else if (!email) {
+            errorMsg.textContent = "Please enter your Email.";
+          } else if (!password) {
+            errorMsg.textContent = "Please enter your Password.";
+          }
+        } else {
+          e.preventDefault();
+          window.location.href = "landing-page-user.html";
+        }
+      });
+      function togglePassword() {
+  const passwordInput = document.getElementById("password-signin");
+  const icon = document.getElementById("eye-icon-signin");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  } else {
+    passwordInput.type = "password";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  }
+}
+  </script>
 </html>
