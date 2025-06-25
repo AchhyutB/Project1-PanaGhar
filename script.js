@@ -1,3 +1,17 @@
+// Login redirect(new-user after login)
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if (email && password) {
+    window.location.href = "landing-page-user.html";
+  } else {
+    // show validation errors
+  }
+});
+
 // password eye button
 
 function togglePassword() {
@@ -26,7 +40,7 @@ function toggleConfirmPassword() {
   }
 }
 
-// To do list (button click)
+// manage-book (button click)
 
 const menuItems = document.querySelectorAll("a.button_upload");
 
@@ -51,21 +65,129 @@ deleteButtons.forEach((button) => {
 });
 
 //password-matching
+// If the user don't give the email or pw for signup error shows
 
-function validatePassword() {
-  const password = document.getElementById("password").value;
-  const confirmPassword = document.getElementById("confirmPassword");
-  const errorText = document.getElementById("confirm-error");
+document.getElementById("signupForm").addEventListener("submit", function (e) {
+  e.preventDefault(); // Stop default submission
 
-  if (password !== confirmPassword.value) {
-    confirmPassword.classList.add("border-red-500");
-    errorText.classList.remove("hidden");
-    return false;
-  } else {
-    confirmPassword.classList.remove("border-red-500");
-    errorText.classList.add("hidden");
+  // Get all field values
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const confirmPassword = document
+    .getElementById("confirmPassword")
+    .value.trim();
+  const confirmError = document.getElementById("confirm-error");
+  const confirmInput = document.getElementById("confirmPassword");
+
+  // Reset error styles/messages
+  confirmError.classList.add("hidden");
+  confirmInput.classList.remove("border-red-500");
+
+  let isValid = true;
+
+  // Check required fields manually (they already have `required` but we'll be sure)
+  const requiredFields = [
+    "firstName",
+    "lastName",
+    "phone",
+    "email",
+    "password",
+    "confirmPassword",
+  ];
+  for (const id of requiredFields) {
+    const input = document.getElementById(id);
+    if (!input.value.trim()) {
+      input.classList.add("border-red-500");
+      isValid = false;
+    } else {
+      input.classList.remove("border-red-500");
+    }
+  }
+
+  // Check password match
+  if (password !== confirmPassword) {
+    confirmInput.classList.add("border-red-500");
+    confirmError.classList.remove("hidden");
+    isValid = false;
+  }
+
+  // Redirect if everything is valid
+  if (isValid) {
     window.location.href = "sign_in.html";
-    return true;
+  }
+});
+
+// Toggle Password
+function togglePassword() {
+  const input = document.getElementById("password");
+  const icon = document.getElementById("eye-icon");
+
+  if (input.type === "password") {
+    input.type = "text";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  } else {
+    input.type = "password";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  }
+}
+
+// Toggle Confirm Password
+function toggleConfirmPassword() {
+  const input = document.getElementById("confirmPassword");
+  const icon = document.getElementById("eye-icon-confirm");
+
+  if (input.type === "password") {
+    input.type = "text";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  } else {
+    input.type = "password";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  }
+}
+
+// // If the user don't give the email or pw for login/signup error shows
+document
+      .getElementById("loginForm-signin")
+      .addEventListener("submit", function (e) {
+        const email = document.getElementById("email-signin").value.trim();
+        const password = document.getElementById("password-signin").value.trim();
+        const errorMsg = document.getElementById("errorMsg-signin");
+
+        errorMsg.textContent = "";
+
+        if (!email || !password) {
+          e.preventDefault();
+
+          if (!email && !password) {
+            errorMsg.textContent = "Please enter both email and password.";
+          } else if (!email) {
+            errorMsg.textContent = "Please enter your email.";
+          } else if (!password) {
+            errorMsg.textContent = "Please enter your password.";
+          }
+        } else {
+          e.preventDefault();
+          window.location.href = "landing-page-user.html";
+        }
+      });
+
+// Optional: Show/hide password toggle
+function togglePassword() {
+  const passwordInput = document.getElementById("password");
+  const icon = document.getElementById("eye-icon");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  } else {
+    passwordInput.type = "password";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
   }
 }
 
@@ -170,5 +292,77 @@ document.addEventListener("click", function (e) {
   if (e.target.classList.contains("delete-items")) {
     e.target.closest(".cart-item").remove();
     updateOrderSummary();
+  }
+});
+
+// dashboard country api
+// async function loadCountries() {
+//   try {
+//     const response = await fetch(
+//       "https://countriesnow.space/api/v0.1/countries/positions"
+//     );
+//     const json = await response.json();
+
+//     const select = document.getElementById("country");
+//     select.innerHTML =
+//       '<option value="" disabled selected>Select Country</option>';
+
+//     const countries = json.data;
+
+//     countries.sort((a, b) => a.name.localeCompare(b.name));
+
+//     for (const country of countries) {
+//       const option = document.createElement("option");
+//       option.value = country.name;
+//       option.textContent = country.name;
+//       select.appendChild(option);
+//     }
+//   } catch (error) {
+//     console.error("Error loading countries:", error);
+//     const select = document.getElementById("country");
+//     select.innerHTML =
+//       "<option disabled selected>Unable to load countries</option>";
+//   }
+// }
+
+// loadCountries();
+
+//Landing-page-book-scroll
+
+document.addEventListener("DOMContentLoaded", () => {
+  const carousel = document.getElementById("carousel");
+  const cards = carousel?.children;
+  const total = cards?.length;
+  let start = 0;
+
+  function updateVisibility() {
+    for (let i = 0; i < total; i++) {
+      cards[i].classList.add("hidden");
+      cards[i].classList.remove("slide-in");
+    }
+    for (let i = 0; i < 3; i++) {
+      const idx = (start + i) % total;
+      cards[idx].classList.remove("hidden");
+      cards[idx].classList.add("slide-in");
+    }
+  }
+
+  const leftArrow = document.getElementById("leftArrow");
+  const rightArrow = document.getElementById("rightArrow");
+
+  if (leftArrow && rightArrow && carousel) {
+    leftArrow.addEventListener("click", () => {
+      start = (start - 1 + total) % total;
+      updateVisibility();
+    });
+
+    rightArrow.addEventListener("click", () => {
+      start = (start + 1) % total;
+      updateVisibility();
+    });
+
+    updateVisibility(); // initial display
+  } else {
+    console.error("Carousel or arrow buttons not found in DOM.");
   }
 });
