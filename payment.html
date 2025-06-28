@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PanaGhar Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-white font-sans">
+    <div class="h-[100vh] flex">
+      <!-- Left side (type) -->
+      <div
+        id="icon"
+        class="lg:w-[350px] md:w-[300px] sm:w-[200px] lg:h-full border-r border-[#868686] flex flex-col lg:px-3 md:px-10 sm:px-7 w-full bg-[#efeeee]"
+      >
+        <img
+          src="assets/green_logo.png"
+          alt=""
+          class="lg:w-[270px] lg:h-[80px] md:w-[350px] md:h-[55px] sm:w-[300px] sm:h-[45px] mt-6"
+        />
+        <!-- Upload -->
+        <div>
+          <div
+          class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B]  border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-6 ml-3"
+        >
+          <i class="fa-solid fa-users"></i>
+          <a class="font-semibold text-[18px]" href="dashboard.html">Dashboard</a>
+        </div>
+        <div
+          class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
+        >
+          <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          <a class="font-semibold text-[18px]" href="upload-book.html"
+            >Upload Books</a
+          >
+        </div>
+        <div
+          class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
+        >
+          <i class="fa-solid fa-book"></i>
+          <a class="font-semibold text-[18px]" href="manage_book.html">Manage Books </a>
+        </div>
+        <div
+          class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
+        >
+          <i class="fa-solid fa-box"></i>
+          <a class="font-semibold text-[18px]" href="payment.html">Payments</a>
+        </div>
+        <div
+          class="button_upload flex items-center justify-start gap-3 p-4 text-[#FF3D00] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
+        >
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <a class="font-semibold text-[18px]" href="sign_in.html ">Logout</a>
+        </div>
+
+        </div>
+      </div>
+      <!-- To-do-list -->
+      <div class="flex flex-col font-['Inter'] mt-[75px] ml-[145px]">
+        <div>
+          <span class="font-[600] text-[27px]">Payments</span>
+        </div>
+
+        <!-- Table Container with Border Radius -->
+        <div
+          class="mt-11 rounded-tl-[13.5px] rounded-tr-[13.5px] overflow-hidden border border-gray-200"
+        >
+          <table id="table" class="min-w-full border-collapse">
+            <thead class="bg-[#88965E80] text-gray-800 font-semibold">
+              <tr>
+                <th class="px-4 py-3 border text-left">S.N.</th>
+                <th class="px-8 py-3 border text-center">Book Name</th>
+                <th class="px-8 py-3 border text-center">Author Name</th>
+                <th class="px-8 py-3 border text-center">Category</th>
+                <th class="px-8 py-3 border text-center">Price</th>
+                <th class="px-8 py-3 border text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white">
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3 border">1</td>
+                <td class="px-4 py-3 border text-center">
+                  Mystery of the Lost Island
+                </td>
+                <td class="px-4 py-3 border text-center">Jane Smith</td>
+                <td class="px-4 py-3 border text-center">Mystery</td>
+                <td class="px-4 py-3 border text-center">Rs 500</td>
+                <td class="px-4 py-3 border text-center">
+                  <div id="btnContainer">
+                    <button
+                      id="pendingBtn"
+                      class="text-blue-700 font-semibold bg-blue-100 hover:bg-blue-200 px-[18px] py-1 rounded mr-2 text-center"
+                    >
+                      Pending
+                    </button>
+                    
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3 border">2</td>
+                <td class="px-4 py-3 border text-center">Learning React</td>
+                <td class="px-4 py-3 border text-center">Alex Johnson</td>
+                <td class="px-4 py-3 border text-center">Technology</td>
+                <td class="px-4 py-3 border text-center">Rs 500</td>
+                <td class="px-4 py-3 border text-center">
+                  <div id="btnContainer">
+                    <button
+                      id="cancelBtn"
+                      class="text-red-600 bg-red-100 hover:bg-red-200 px-3 py-1 rounded mr-2"
+                    >
+                      Cancelled
+                    </button>
+                    
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3 border">3</td>
+                <td class="px-4 py-3 border text-center">Cooking Made Easy</td>
+                <td class="px-4 py-3 border text-center">Emily Clark</td>
+                <td class="px-4 py-3 border text-center">Cooking</td>
+                <td class="px-4 py-3 border text-center">Rs 500</td>
+                <td class="px-4 py-3 border">
+                  <div id="btnContainer">
+                    <button
+                      id="receivedBtn"
+                      class="text-[#4CAF50] bg-[#4caf4f46] hover:bg-[#84c186a3] px-[15px] py-1 rounded mr-2 text-center"
+                    >
+                      Received
+                    </button>
+                    
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3 border">4</td>
+                <td class="px-4 py-3 border text-center">Echoes of the Past</td>
+                <td class="px-4 py-3 border text-center">Michael Brown</td>
+                <td class="px-4 py-3 border text-center">Historical Fiction</td>
+                <td class="px-4 py-3 border text-center">Rs 500</td>
+                <td class="px-4 py-3 border">
+                  <div id="btnContainer">
+                    <button
+                      id="receivedBtn"
+                      class="text-[#4CAF50] bg-[#4caf4f46] hover:bg-[#84c186a3] px-[15px] py-1 rounded mr-2 text-center"
+                    >
+                      Received
+                    </button>
+                    
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
