@@ -167,7 +167,9 @@
               <input type="checkbox" required class="mr-2" />
               I agree to all the
               <span class="text-[#C9996F] font-semibold mx-1">Terms</span> and
-              <span class="text-[#C9996F] font-semibold mx-1">Privacy policy</span>
+              <span class="text-[#C9996F] font-semibold mx-1"
+                >Privacy policy</span
+              >
             </label>
           </div>
 
@@ -326,5 +328,33 @@
         // If all validations pass, redirect
         window.location.href = "sign_in.html";
       });
+
+    // password eye button
+
+    function togglePassword() {
+      const password = document.getElementById("password-signup");
+      const icon = document.getElementById("eye-icon");
+
+      if (password.type === "password") {
+        password.type = "text";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+      } else {
+        password.type = "password";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+      }
+    }
+    function toggleConfirmPassword() {
+      const input = document.getElementById("confirmPassword");
+      const icon = document.getElementById("eye-icon-confirm");
+      if (input.type === "password") {
+        input.type = "text";
+        icon.classList.replace("fa-eye-slash", "fa-eye");
+      } else {
+        input.type = "password";
+        icon.classList.replace("fa-eye", "fa-eye-slash");
+      }
+    }
   </script>
 </html>
